@@ -104,6 +104,22 @@ class RealFizzBuzzTest extends FeatureSpec with GivenWhenThen with Matchers {
       actual should equal("lucky 14 fizzbuzz 16 17 fizz 19 buzz fizz 22 lucky fizz buzz 26 fizz 28 29 lucky")
     }
 
+    scenario("Report count of words and integers") {
+      Given("a numbers in the range 1 to 20")
+      val range = 1 to 20
+
+      When("a count is made on the number of words and integers")
+      val parsedString = RealFizzBuzz.parseNumbers(range)
+      val actual = RealFizzBuzz.countWordsAndNumbers(parsedString)
+
+      Then("the reported output should contain: fizz: 4, buzz: 3, fizzbuzz: 1, lucky:2, and integer:10")
+      actual("fizz") should equal(4)
+      actual("buzz") should equal(3)
+      actual("fizzbuzz") should equal(1)
+      actual("lucky") should equal(2)
+      actual("integer") should equal(10)
+    }
+
   }
 
 }

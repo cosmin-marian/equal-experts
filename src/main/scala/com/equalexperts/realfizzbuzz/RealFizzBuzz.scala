@@ -64,8 +64,38 @@ object RealFizzBuzz {
    */
   def parseNumbers(xs: Range): String = xs.map(x => numberToWord(x)).mkString(" ").trim
 
+  /**
+   * Filter for separating words and integers in a string
+   * 
+   * @param s   string containing words and integers
+   * @return    true if it is a word, otherwise false
+   */
+  def isWord(s : String) : Boolean = s match {
+    case "fizz" => true
+    case "buzz" => true
+    case "fizzbuzz" => true
+    case "lucky" => true
+    case _ => false
+  }
+
+  /**
+   * Count the number of each word and all the numbers
+
+   * @param xs    string containing words and integers
+   * @return      a map containing a count of each word and a count
+   *              of integers
+   */
+  def countWordsAndNumbers(xs : String) : Map[String, Int] = {
+    val wordsAndNumbers = xs.split(" ")
+    val words = wordsAndNumbers.filter(isWord)
+    val count = words.groupBy(identity).mapValues(x => x.length)
+    count + ("integer" -> (wordsAndNumbers.length - words.length))
+  }
+
   def main(args: Array[String]) {
-    println(parseNumbers(1 to 20))
+    val s = parseNumbers(1 to 20)
+    val ms = countWordsAndNumbers(s)
+    println(ms)
   }
   
 }
