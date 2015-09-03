@@ -105,19 +105,55 @@ class RealFizzBuzzTest extends FeatureSpec with GivenWhenThen with Matchers {
     }
 
     scenario("Report count of words and integers") {
-      Given("a numbers in the range 1 to 20")
+      Given("a number in the range 1 to 20")
       val range = 1 to 20
 
       When("a count is made on the number of words and integers")
       val parsedString = RealFizzBuzz.parseNumbers(range)
-      val actual = RealFizzBuzz.countWordsAndNumbers(parsedString)
+      val actualCount = RealFizzBuzz.countWordsAndNumbers(parsedString)
 
       Then("the reported output should contain: fizz: 4, buzz: 3, fizzbuzz: 1, lucky:2, and integer:10")
-      actual("fizz") should equal(4)
-      actual("buzz") should equal(3)
-      actual("fizzbuzz") should equal(1)
-      actual("lucky") should equal(2)
-      actual("integer") should equal(10)
+      actualCount("fizz") should equal(4)
+      actualCount("buzz") should equal(3)
+      actualCount("fizzbuzz") should equal(1)
+      actualCount("lucky") should equal(2)
+      actualCount("integer") should equal(10)
+    }
+
+    scenario("Report count of words and integers when there are no words and no integers") {
+      Given("an empty range")
+      val range = 0 until 0
+
+      When("a count is made on the number of words and integers")
+      val parsedString = RealFizzBuzz.parseNumbers(range)
+      val actualCount = RealFizzBuzz.countWordsAndNumbers(parsedString)
+
+      Then("the reported output should contain an empty string")
+      actualCount should ===(Map[String,Int]())
+    }
+
+    scenario("Report count of words and integers when there is only one word in the string and no integers") {
+      Given("a single number 3")
+      val range = 3 to 3
+
+      When("a count is made on the number of words and integers")
+      val parsedString = RealFizzBuzz.parseNumbers(range)
+      val actualCount = RealFizzBuzz.countWordsAndNumbers(parsedString)
+
+      Then("the reported output should contain: lucky: 1")
+      actualCount("lucky") should equal(1)
+    }
+
+    scenario("Report count of words and integers when there is two integers in the string and no words") {
+      Given("a number range between 1 and 2 inclusive")
+      val range = 1 to 2
+
+      When("a count is made on the number of words and integers")
+      val parsedString = RealFizzBuzz.parseNumbers(range)
+      val actualCount = RealFizzBuzz.countWordsAndNumbers(parsedString)
+
+      Then("the reported output should contain: integer: 2")
+      actualCount("integer") should equal(2)
     }
 
   }
