@@ -27,6 +27,14 @@ object RealFizzBuzz {
   def isMultipleOfFifteen(x: Int) = x % 15 == 0
 
   /**
+   * Determines if a number contains the digit 3
+   *
+   * @param x   number to verify
+   * @return    true if this number contains the digit 3, otherwise false
+   */
+  def containsTheDigitThree(x : Int) = x.toString.contains("3")
+
+  /**
    * Map a number to a string
    *
    * If a multiple of 3, 5 or 15 is found then either
@@ -38,6 +46,7 @@ object RealFizzBuzz {
    * @return    returns a string
    */
   def numberToWord(x: Int): String = x match {
+    case n if containsTheDigitThree(n) => "lucky"
     case n if isMultipleOfFifteen(n) => "fizzbuzz"
     case n if isMultipleOfFive(n) => "buzz"
     case n if isMultipleOfThree(n) => "fizz"
@@ -54,5 +63,9 @@ object RealFizzBuzz {
    *             or just the number itself
    */
   def parseNumbers(xs: Range): String = xs.map(x => numberToWord(x)).mkString(" ").trim
+
+  def main(args: Array[String]) {
+    println(parseNumbers(1 to 20))
+  }
   
 }

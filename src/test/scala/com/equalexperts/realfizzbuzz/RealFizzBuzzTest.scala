@@ -35,7 +35,7 @@ class RealFizzBuzzTest extends FeatureSpec with GivenWhenThen with Matchers {
       val actual = RealFizzBuzz.parseNumbers(range)
 
       Then("fizz should be returned")
-      actual should equal("fizz")
+      actual should equal("lucky")
     }
 
     scenario("Handle special case of a number range with just five") {
@@ -79,7 +79,7 @@ class RealFizzBuzzTest extends FeatureSpec with GivenWhenThen with Matchers {
       val actual = RealFizzBuzz.parseNumbers(range)
 
       Then("all multiples should be replaced with their corresponding word")
-      actual should equal("1 2 fizz 4 buzz fizz 7 8 fizz buzz 11 fizz 13 14 fizzbuzz 16 17 fizz 19 buzz")
+      actual should equal("1 2 lucky 4 buzz fizz 7 8 fizz buzz 11 fizz lucky 14 fizzbuzz 16 17 fizz 19 buzz")
     }
 
     scenario("A negative number range with multiples of 3, 5, and 15") {
@@ -90,7 +90,18 @@ class RealFizzBuzzTest extends FeatureSpec with GivenWhenThen with Matchers {
       val actual = RealFizzBuzz.parseNumbers(range)
 
       Then("all multiples should be replaced with their corresponding word")
-      actual should equal("buzz -19 fizz -17 -16 fizzbuzz -14 -13 fizz -11 buzz fizz -8 -7 fizz buzz -4 fizz -2 -1")
+      actual should equal("buzz -19 fizz -17 -16 fizzbuzz -14 lucky fizz -11 buzz fizz -8 -7 fizz buzz -4 lucky -2 -1")
+    }
+
+    scenario("A number range with numbers containing the digit three") {
+      Given("a number range with numbers containing the digit three")
+      val range = 13 to 30
+
+      When("this number range is parsed")
+      val actual = RealFizzBuzz.parseNumbers(range)
+
+      Then("all numbers containing the digit three will be replaced by the word lucky")
+      actual should equal("lucky 14 fizzbuzz 16 17 fizz 19 buzz fizz 22 lucky fizz buzz 26 fizz 28 29 lucky")
     }
 
   }
