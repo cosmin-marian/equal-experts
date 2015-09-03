@@ -1,0 +1,9 @@
+.DS_Store
+
+# Scala/sbt
+target
+.history/
+src_managed/
+
+# Intellij
+.idea
