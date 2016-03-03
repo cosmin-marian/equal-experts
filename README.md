@@ -47,8 +47,6 @@ integer: 10
  
 (Integer is 10 because there were 10 numbers that were not altered in any way). 
  
-Archive this as a separate file and send all three files to techtest@equalexperts.com 
- 
 ## Guidelines for offline code tests: 
  
 You should not find this test to be particularly difficult. It is designed to be a straightforward coding exercise, and it should take you no more than 90 minutes. 
