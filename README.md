@@ -1,5 +1,7 @@
 # Real FizzBuzz 
- 
+
+[![Coverage Status](https://coveralls.io/repos/github/cokleisli/equal-experts/badge.svg?branch=master)](https://coveralls.io/github/cokleisli/equal-experts?branch=master)
+
 ## Technical description: 
  
 ### Step 1: 
