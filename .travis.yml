@@ -2,7 +2,7 @@ language: scala
 
 script:
   - sbt clean coverage test
-  - sbt coverageReport
 
 after_success:
+  - sbt coverageReport
   - bash <(curl -s https://codecov.io/bash)
