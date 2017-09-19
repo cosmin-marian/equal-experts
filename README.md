@@ -3,7 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/cokleisli/equal-experts/badge.svg?branch=master)](https://coveralls.io/github/cokleisli/equal-experts?branch=master)
 
 This is the programming test that is set by Equal Experts to screen
-candidates who are Scala developers. If you feel/think that Equal
+candidates who are Scala developers. If you really feel/think that Equal
 Experts are a reputable/good company to work for then take a look at the
 solution. 
 
